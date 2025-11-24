@@ -8,31 +8,34 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Floating Background Elements -->
     <div class="floating-elements">
-        <div class="floating-element" style="width: 100px; height: 100px; top: 10%; left: 5%;"></div>
-        <div class="floating-element" style="width: 150px; height: 150px; top: 60%; left: 80%;"></div>
-        <div class="floating-element" style="width: 80px; height: 80px; top: 80%; left: 10%;"></div>
-        <div class="floating-element" style="width: 120px; height: 120px; top: 30%; left: 70%;"></div>
+        <div class="floating-element" style="width: 100px; height: 100px; top: 10%; left: 5%; animation-delay: 0s;"></div>
+        <div class="floating-element" style="width: 150px; height: 150px; top: 60%; left: 80%; animation-delay: 3s;"></div>
+        <div class="floating-element" style="width: 80px; height: 80px; top: 80%; left: 10%; animation-delay: 6s;"></div>
+        <div class="floating-element" style="width: 120px; height: 120px; top: 30%; left: 70%; animation-delay: 9s;"></div>
     </div>
 
+    <!-- Header & Navigation -->
     <header>
         <div class="container">
             <nav>
                 <div class="logo">Brenda<span>Cherotich</span></div>
-                <ul class="nav-links">
+                <ul class="nav-links" id="navLinks">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <div class="hamburger">
+                <div class="hamburger" id="hamburger">
                     <i class="fas fa-bars"></i>
                 </div>
             </nav>
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
@@ -44,7 +47,7 @@
         <div class="hero-image"></div>
     </section>
 
-
+    <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
             <div class="section-title">
@@ -60,9 +63,9 @@
                     <p>My expertise spans across web development, network administration, cybersecurity, and digital transformation strategies. I'm passionate about leveraging technology to solve complex problems and create meaningful impact.</p>
                     <div class="skills">
                         <div class="skill">Web Development</div>
-                        <div class="skill">Networking</div>
-                        <div class="skill">Graphics Design (Corel Draw)</div>
-                        <div class="skill">Repair and Maintainance</div>
+                        <div class="skill">Network Administration</div>
+                        <div class="skill">Cybersecurity</div>
+                        <div class="skill">Cloud Computing</div>
                         <div class="skill">Database Management</div>
                         <div class="skill">IT Consulting</div>
                     </div>
@@ -191,7 +194,7 @@
                         </div>
                         <div class="contact-details">
                             <h3>Location</h3>
-                            <p>Mombasa, Kenya</p>
+                            <p>Nairobi, Kenya</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -200,7 +203,7 @@
                         </div>
                         <div class="contact-details">
                             <h3>Email</h3>
-                            <p>brendacherotich2025@gmail.com</p>
+                            <p>brenda.cherotich@example.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -209,7 +212,7 @@
                         </div>
                         <div class="contact-details">
                             <h3>Phone</h3>
-                            <p>+254 114 762 408</p>
+                            <p>+254 712 345 678</p>
                         </div>
                     </div>
                 </div>
@@ -252,13 +255,18 @@
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
             });
         });
 
@@ -279,23 +287,6 @@
                 header.style.backgroundColor = 'var(--white)';
                 header.style.backdropFilter = 'none';
             }
-        });
-
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        
-        hamburger.addEventListener('click', function() {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        });
-
-    
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 768) {
-                    navLinks.style.display = 'none';
-                }
-            });
         });
     </script>
 </body>
